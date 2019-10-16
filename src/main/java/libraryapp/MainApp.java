@@ -3,7 +3,9 @@ package libraryapp;
 import java.sql.SQLException;
 import java.util.List;
 import libraryapp.config.AppConfig;
+import libraryapp.entity.Book;
 import libraryapp.entity.User;
+import libraryapp.service.BookService;
 import libraryapp.service.UserService;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -14,6 +16,11 @@ public class MainApp {
                 new AnnotationConfigApplicationContext(AppConfig.class);
 
         UserService userService = context.getBean(UserService.class);
+        BookService bookService = context.getBean(BookService.class);
+
+        //Test Books
+
+        bookService.add(new Book("Fight Club", 25.00, 1996));
 
         // Add Users
         userService.add(new User("Sunil", "Bora", "suni.bora@example.com"));
