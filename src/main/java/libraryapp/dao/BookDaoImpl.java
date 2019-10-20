@@ -1,28 +1,28 @@
 package libraryapp.dao;
 
+import libraryapp.entity.Book;
+
 import java.util.List;
 import javax.persistence.TypedQuery;
-import libraryapp.entity.User;
-
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class UserDaoImp implements UserDao {
+public class BookDaoImpl implements BookDao {
 
     @Autowired
     private SessionFactory sessionFactory;
 
     @Override
-    public void add(User user) {
-        sessionFactory.getCurrentSession().save(user);
+    public void add(Book book) {
+        sessionFactory.getCurrentSession().save(book);
     }
 
     @Override
-    public List<User> listUsers() {
+    public List<Book> getAll() {
         @SuppressWarnings("unchecked")
-        TypedQuery<User> query = sessionFactory.getCurrentSession().createQuery("FROM User");
+        TypedQuery<Book> query = sessionFactory.getCurrentSession().createQuery("FROM Book");
         return query.getResultList();
     }
 }
