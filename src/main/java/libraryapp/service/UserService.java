@@ -7,5 +7,5 @@ import libraryapp.entity.User;
 public interface UserService {
     void add(User user);
 
-    List<User> listUsers();
+    List<User> getAll();
 }

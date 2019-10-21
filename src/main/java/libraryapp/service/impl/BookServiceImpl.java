@@ -1,8 +1,9 @@
-package libraryapp.service;
+package libraryapp.service.impl;
 
 import java.util.List;
 import libraryapp.dao.BookDao;
 import libraryapp.entity.Book;
+import libraryapp.service.BookService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,5 +25,11 @@ public class BookServiceImpl implements BookService {
     @Override
     public List<Book> getAll() {
         return bookDao.getAll();
+    }
+
+    @Transactional(readOnly = true)
+    @Override
+    public List<Book> getByTitle(String title) {
+        return bookDao.getByTitle(title);
     }
 }
