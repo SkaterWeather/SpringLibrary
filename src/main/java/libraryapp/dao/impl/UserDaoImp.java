@@ -23,8 +23,7 @@ public class UserDaoImp implements UserDao {
 
     @Override
     public List<User> getAll() {
-        @SuppressWarnings("unchecked")
-        TypedQuery<User> query = sessionFactory.getCurrentSession().createQuery("FROM User");
+        TypedQuery<User> query = sessionFactory.getCurrentSession().createQuery("FROM User", User.class);
         return query.getResultList();
     }
 }

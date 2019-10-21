@@ -28,6 +28,7 @@ public class Rent {
     @OneToOne
     @JoinColumn(name = "book_id", referencedColumnName = "id")
     private Book book;
+
     private boolean active;
 
     public Rent(LocalDate rentDate, User user, Book book, boolean active) {

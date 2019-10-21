@@ -22,26 +22,23 @@ public class AuthorDaoImpl implements AuthorDao {
 
     @Override
     public List<Author> getAll() {
-        @SuppressWarnings("unchecked")
-        TypedQuery<Author> query = sessionFactory.getCurrentSession().createQuery("FROM Author");
+        TypedQuery<Author> query = sessionFactory.getCurrentSession().createQuery("FROM Author", Author.class);
         return query.getResultList();
     }
 
     @Override
     public List<Author> getByName(String name) {
-        @SuppressWarnings("unchecked")
         TypedQuery<Author> query = sessionFactory.getCurrentSession()
-                .createQuery("FROM Author WHERE name LIKE CONCAT('%', :name, '%')");
+                .createQuery("FROM Author WHERE name LIKE CONCAT('%', :name, '%')", Author.class);
         query.setParameter("name", name);
         return query.getResultList();
     }
 
     @Override
     public List<Author> getByNameAndSurname(String name, String surname) {
-        @SuppressWarnings("unchecked")
         TypedQuery<Author> query = sessionFactory.getCurrentSession()
                 .createQuery("FROM Author WHERE name LIKE CONCAT('%', :name, '%') "
-                        + "AND surname LIKE CONCAT('%', :surname, '%')");
+                        + "AND surname LIKE CONCAT('%', :surname, '%')", Author.class);
         query.setParameter("name", name);
         query.setParameter("surname", surname);
         return query.getResultList();
