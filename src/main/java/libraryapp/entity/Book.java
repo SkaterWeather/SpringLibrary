@@ -7,6 +7,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 @Entity
 @Table(name = "books")
@@ -23,6 +25,7 @@ public class Book {
     private Integer year;
 
     @ManyToMany(mappedBy = "books")
+    @LazyCollection(LazyCollectionOption.FALSE)
     private List<Author> authors;
 
     public Book(String title, Double price, Integer year, List<Author> authors) {
