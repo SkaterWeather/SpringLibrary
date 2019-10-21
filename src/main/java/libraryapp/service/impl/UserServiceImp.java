@@ -1,8 +1,9 @@
-package libraryapp.service;
+package libraryapp.service.impl;
 
 import java.util.List;
 import libraryapp.dao.UserDao;
 import libraryapp.entity.User;
+import libraryapp.service.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,8 +23,7 @@ public class UserServiceImp implements UserService {
 
     @Transactional(readOnly = true)
     @Override
-    public List<User> listUsers() {
-        return userDao.listUsers();
+    public List<User> getAll() {
+        return userDao.getAll();
     }
-
 }

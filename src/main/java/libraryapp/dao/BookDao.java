@@ -8,4 +8,6 @@ public interface BookDao {
     void add(Book book);
 
     List<Book> getAll();
+
+    List<Book> getByTitle(String title);
 }
