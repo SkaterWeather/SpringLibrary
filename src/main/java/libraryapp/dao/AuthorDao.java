@@ -1,8 +1,7 @@
 package libraryapp.dao;
 
-import libraryapp.entity.Author;
-
 import java.util.List;
+import libraryapp.entity.Author;
 
 public interface AuthorDao {
     void add(Author author);

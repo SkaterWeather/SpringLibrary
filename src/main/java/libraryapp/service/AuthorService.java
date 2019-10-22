@@ -1,8 +1,7 @@
 package libraryapp.service;
 
-import libraryapp.entity.Author;
-
 import java.util.List;
+import libraryapp.entity.Author;
 
 public interface AuthorService {
     void add(Author author);

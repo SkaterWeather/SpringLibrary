@@ -1,13 +1,13 @@
 package libraryapp.dao;
 
-import libraryapp.entity.Book;
-
 import java.util.List;
+import java.util.Optional;
+import libraryapp.entity.Book;
 
 public interface BookDao {
     void add(Book book);
 
-    Book get(Long id);
+    Optional<Book> get(Long id);
 
     List<Book> getAll();
 

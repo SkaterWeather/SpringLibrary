@@ -1,8 +1,7 @@
 package libraryapp.service;
 
-import libraryapp.entity.Rent;
-
 import java.util.List;
+import libraryapp.entity.Rent;
 
 public interface RentService {
     void add(Rent rent);

@@ -1,8 +1,7 @@
 package libraryapp.service;
 
-import libraryapp.entity.Book;
-
 import java.util.List;
+import libraryapp.entity.Book;
 
 public interface BookService {
     void add(Book book);

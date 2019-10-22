@@ -2,7 +2,6 @@ package libraryapp.dao.impl;
 
 import java.util.List;
 import javax.persistence.TypedQuery;
-
 import libraryapp.dao.UserDao;
 import libraryapp.entity.User;
 
@@ -23,7 +22,8 @@ public class UserDaoImp implements UserDao {
 
     @Override
     public List<User> getAll() {
-        TypedQuery<User> query = sessionFactory.getCurrentSession().createQuery("FROM User", User.class);
+        TypedQuery<User> query = sessionFactory.getCurrentSession()
+                .createQuery("FROM User", User.class);
         return query.getResultList();
     }
 }

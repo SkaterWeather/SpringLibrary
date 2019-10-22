@@ -1,13 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:useBean id="allBooks" scope="request" type="java.util.List"/>
-<%--
-  Created by IntelliJ IDEA.
-  User: Max
-  Date: 21-Oct-19
-  Time: 22:06
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <html>
     <head>
         <title>All Books</title>
@@ -28,7 +22,7 @@
                     <td>${book.price}</td>
                     <td>${book.year}</td>
                     <td>
-                        <a href="${pageContext.request.contextPath}/book/info?book_id=${book.id}">More details...</a>
+                        <a href="${pageContext.request.contextPath}/book/${book.id}">More details...</a>
                     </td>
                 </tr>
             </c:forEach>
