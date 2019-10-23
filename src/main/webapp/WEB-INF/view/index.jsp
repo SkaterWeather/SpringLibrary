@@ -12,6 +12,7 @@
     </head>
     <body>
         Index page, all links you can visit: <p>
-        <a href="${pageContext.request.contextPath}/book">All Books</a>
+        <a href="${pageContext.request.contextPath}/book">Books</a> <br/>
+        <a href="${pageContext.request.contextPath}/rent">Rents</a>
 </body>
 </html>

@@ -1,6 +1,7 @@
 package libraryapp.service.impl;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 import libraryapp.dao.UserDao;
 import libraryapp.entity.User;
 import libraryapp.service.UserService;
@@ -15,14 +16,20 @@ public class UserServiceImp implements UserService {
     @Autowired
     private UserDao userDao;
 
-    @Transactional
     @Override
+    @Transactional
     public void add(User user) {
         userDao.add(user);
     }
 
-    @Transactional(readOnly = true)
     @Override
+    @Transactional(readOnly = true)
+    public User get(Long id) {
+        return userDao.get(id).orElseThrow(NoSuchElementException::new);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
     public List<User> getAll() {
         return userDao.getAll();
     }
