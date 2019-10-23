@@ -1,6 +1,7 @@
 package libraryapp.service.impl;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 import libraryapp.dao.BookDao;
 import libraryapp.entity.Book;
 import libraryapp.service.BookService;
@@ -19,6 +20,12 @@ public class BookServiceImpl implements BookService {
     @Override
     public void add(Book book) {
         bookDao.add(book);
+    }
+
+    @Transactional(readOnly = true)
+    @Override
+    public Book get(Long id) {
+        return bookDao.get(id).orElseThrow(NoSuchElementException::new);
     }
 
     @Transactional(readOnly = true)

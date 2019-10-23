@@ -1,10 +1,11 @@
 package libraryapp.dao.impl;
 
+import java.util.List;
+import java.util.Optional;
+import javax.persistence.TypedQuery;
 import libraryapp.dao.BookDao;
 import libraryapp.entity.Book;
 
-import java.util.List;
-import javax.persistence.TypedQuery;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -21,8 +22,17 @@ public class BookDaoImpl implements BookDao {
     }
 
     @Override
+    public Optional<Book> get(Long id) {
+        TypedQuery<Book> query = sessionFactory.getCurrentSession()
+                .createQuery("FROM Book WHERE id=:id", Book.class);
+        query.setParameter("id", id);
+        return Optional.ofNullable(query.getSingleResult());
+    }
+
+    @Override
     public List<Book> getAll() {
-        TypedQuery<Book> query = sessionFactory.getCurrentSession().createQuery("FROM Book", Book.class);
+        TypedQuery<Book> query = sessionFactory.getCurrentSession()
+                .createQuery("FROM Book", Book.class);
         return query.getResultList();
     }
 

@@ -21,24 +21,29 @@ public class MainApp {
         AnnotationConfigApplicationContext context =
                 new AnnotationConfigApplicationContext(AppConfig.class);
 
-        UserService userService = context.getBean(UserService.class);
-        BookService bookService = context.getBean(BookService.class);
-        AuthorService authorService = context.getBean(AuthorService.class);
-        RentService rentService = context.getBean(RentService.class);
-
         //Add users
-        userService.add(new User("Suni", "Bora", "suni.bora@example.com"));
-        userService.add(new User("David", "Miller", "david.miller@example.com"));
+        UserService userService = context.getBean(UserService.class);
+        userService.add(
+                new User("Suni", "Bora", "suni.bora@example.com"));
+        userService.add(
+                new User("David", "Miller", "david.miller@example.com"));
 
         //Add books
-        bookService.add(new Book("Fight Club", 25.00, 1996, Collections.emptyList()));
-        bookService.add(new Book("LOTR: Fellowhip of the Ring", 25.00, 1954, Collections.emptyList()));
+        BookService bookService = context.getBean(BookService.class);
+        bookService.add(new Book("Fight Club",
+                25.00, 1996, Collections.emptyList()));
+        bookService.add(new Book("LOTR: Fellowhip of the Ring",
+                25.00, 1954, Collections.emptyList()));
 
         //Add authors
-        authorService.add(new Author("Chuck", "Palahniuk", bookService.getByTitle("Fight Club")));
-        authorService.add(new Author("John Ronald Reuel", "Tolkien", bookService.getByTitle("LOTR")));
+        AuthorService authorService = context.getBean(AuthorService.class);
+        authorService.add(new Author("Chuck", "Palahniuk",
+                        bookService.getByTitle("Fight Club")));
+        authorService.add(new Author("John Ronald Reuel", "Tolkien",
+                        bookService.getByTitle("LOTR")));
 
         //Add rents
+        RentService rentService = context.getBean(RentService.class);
         rentService.add(new Rent(LocalDate.now(),
                 userService.getAll().get(0),
                 bookService.getByTitle("LOTR: Fellowhip of the Ring").get(0),
@@ -47,7 +52,8 @@ public class MainApp {
         //Get Authors
         List<Author> getAll = authorService.getAll();
         List<Author> getByName = authorService.getByName("Chuck");
-        List<Author> getByNameAndSurname = authorService.getByNameAndSurname("Chuck", "Palahniuk");
+        List<Author> getByNameAndSurname
+                = authorService.getByNameAndSurname("Chuck", "Palahniuk");
 
         //Get rents
         List<Rent> rents = rentService.getAll();

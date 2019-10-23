@@ -1,10 +1,10 @@
 package libraryapp.dao.impl;
 
+import java.util.List;
+import javax.persistence.TypedQuery;
 import libraryapp.dao.RentDao;
 import libraryapp.entity.Rent;
 
-import java.util.List;
-import javax.persistence.TypedQuery;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -22,7 +22,8 @@ public class RentDaoImpl implements RentDao {
 
     @Override
     public List<Rent> getAll() {
-        TypedQuery<Rent> query = sessionFactory.getCurrentSession().createQuery("FROM Rent", Rent.class);
+        TypedQuery<Rent> query = sessionFactory.getCurrentSession()
+                .createQuery("FROM Rent", Rent.class);
         return query.getResultList();
     }
 }

@@ -1,10 +1,10 @@
 package libraryapp.dao.impl;
 
+import java.util.List;
+import javax.persistence.TypedQuery;
 import libraryapp.dao.AuthorDao;
 import libraryapp.entity.Author;
 
-import java.util.List;
-import javax.persistence.TypedQuery;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -22,7 +22,8 @@ public class AuthorDaoImpl implements AuthorDao {
 
     @Override
     public List<Author> getAll() {
-        TypedQuery<Author> query = sessionFactory.getCurrentSession().createQuery("FROM Author", Author.class);
+        TypedQuery<Author> query = sessionFactory.getCurrentSession()
+                .createQuery("FROM Author", Author.class);
         return query.getResultList();
     }
 

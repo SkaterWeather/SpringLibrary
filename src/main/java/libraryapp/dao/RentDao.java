@@ -1,8 +1,7 @@
 package libraryapp.dao;
 
-import libraryapp.entity.Rent;
-
 import java.util.List;
+import libraryapp.entity.Rent;
 
 public interface RentDao {
     void add(Rent rent);
