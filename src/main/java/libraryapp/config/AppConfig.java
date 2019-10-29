@@ -3,11 +3,6 @@ package libraryapp.config;
 import java.util.Properties;
 import javax.sql.DataSource;
 
-import libraryapp.entity.Author;
-import libraryapp.entity.Book;
-import libraryapp.entity.Rent;
-import libraryapp.entity.User;
-
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -53,7 +48,7 @@ public class AppConfig {
         props.put("hibernate.dialect", env.getProperty("hibernate.dialect"));
 
         factoryBean.setHibernateProperties(props);
-        factoryBean.setAnnotatedClasses(User.class, Book.class, Author.class, Rent.class);
+        factoryBean.setPackagesToScan("libraryapp.entity");
         return factoryBean;
     }
 

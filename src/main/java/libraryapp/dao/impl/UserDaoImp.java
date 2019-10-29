@@ -26,7 +26,11 @@ public class UserDaoImp implements UserDao {
         TypedQuery<User> query = sessionFactory.getCurrentSession()
                 .createQuery("FROM User WHERE id=:id", User.class);
         query.setParameter("id", id);
-        return Optional.ofNullable(query.getSingleResult());
+        try {
+            return Optional.ofNullable(query.getSingleResult());
+        } catch (Exception e) {
+            return Optional.empty();
+        }
     }
 
     @Override
@@ -34,5 +38,29 @@ public class UserDaoImp implements UserDao {
         TypedQuery<User> query = sessionFactory.getCurrentSession()
                 .createQuery("FROM User", User.class);
         return query.getResultList();
+    }
+
+    @Override
+    public Optional<User> getByEmail(String email) {
+        TypedQuery<User> query = sessionFactory.getCurrentSession()
+                .createQuery("FROM User WHERE email=:email", User.class);
+        query.setParameter("email", email);
+        try {
+            return Optional.ofNullable(query.getSingleResult());
+        } catch (Exception e) {
+            return Optional.empty();
+        }
+    }
+
+    @Override
+    public Optional<User> getByUsername(String username) {
+        TypedQuery<User> query = sessionFactory.getCurrentSession()
+                .createQuery("FROM User WHERE username=:username", User.class);
+        query.setParameter("username", username);
+        try {
+            return Optional.ofNullable(query.getSingleResult());
+        } catch (Exception e) {
+            return Optional.empty();
+        }
     }
 }
